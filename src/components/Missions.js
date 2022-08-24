@@ -23,7 +23,6 @@ function Missions() {
             <td>{mission.mission_name}</td>
           </tr>
         ))}
-        {' '}
       </tbody>
     </Table>
   );
