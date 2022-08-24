@@ -2,11 +2,12 @@ import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { configureStore } from '@reduxjs/toolkit';
 import missionsReducer from './missions/missions';
-// import categoriesReducer from './categories/categories';
+import rocketsReducer from './rockets/rockets';
 
 const initialState = {};
 const middleware = [thunk];
 const appReducer = combineReducers({
+  rocketsReducer,
   missionsReducer,
 });
 
