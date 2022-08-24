@@ -16,11 +16,11 @@ export default function reducer(state = initialState, action = {}) {
       payload.forEach((rocket) => {
         const {
           // eslint-disable-next-line camelcase
-          id, rocket_name, rocket_type, flickr_images,
+          id, rocket_name, description, flickr_images,
         } = rocket;
         newState.push({
           // eslint-disable-next-line camelcase
-          id, rocket_name, rocket_type, flickr_images,
+          id, rocket_name, description, flickr_images,
         });
       });
       return newState;
