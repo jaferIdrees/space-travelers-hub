@@ -12,7 +12,18 @@ export default function reducer(state = initialState, action = {}) {
   switch (type) {
     case RETRIEVE_MISSIONS:
     {
-      return payload;
+      const newState = [];
+      payload.forEach((mission) => {
+        const {
+          // eslint-disable-next-line camelcase
+          mission_id, mission_name, description,
+        } = mission;
+        newState.push({
+          // eslint-disable-next-line camelcase
+          mission_id, mission_name, description,
+        });
+      });
+      return newState;
     }
     default: return state;
   }
