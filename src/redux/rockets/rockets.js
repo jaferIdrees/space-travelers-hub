@@ -27,7 +27,6 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
   reducers: {
-    // standard reducer logic, with auto-generated action types per reducer
     reserveRocket: (state, action) => state.map((rocket) => {
       if (rocket.id !== action.payload.rocket.id) {
         return rocket;
@@ -36,7 +35,6 @@ const rocketsSlice = createSlice({
     }),
   },
   extraReducers: (builder) => {
-    // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(retrieveRockets.fulfilled, (state, action) => action.payload);
   },
 });
