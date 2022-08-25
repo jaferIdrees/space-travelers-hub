@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { retrieveMissions, joinMission } from '../redux/missions/missions';
 
 function Missions() {
-  const missions = useSelector((state) => state.missionsReducer);
+  const missions = useSelector((state) => state.missions);
   const dispatch = useDispatch();
-  if (missions.length === 0) {
-    dispatch(retrieveMissions());
-  }
+  useEffect(() => {
+    if (missions.length === 0) {
+      dispatch(retrieveMissions());
+    }
+  }, []);
   return (
     <Table striped bordered hover>
       <thead>
@@ -24,7 +26,7 @@ function Missions() {
       </thead>
       <tbody>
         {missions.map((mission) => (
-          <tr key={uuidv4()}>
+          <tr key={mission.mission_id}>
             <td>{mission.mission_name}</td>
             <td>{mission.description}</td>
             <td>
