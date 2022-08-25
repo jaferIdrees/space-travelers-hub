@@ -1,20 +1,21 @@
-import { combineReducers } from 'redux';
-import thunk from 'redux-thunk';
+// import { combineReducers } from 'redux';
+import logger from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
 import missionsReducer from './missions/missions';
-import rocketsReducer from './rockets/rockets';
+import rocketsSlice from './rockets/rockets';
 
-const initialState = {};
-const middleware = [thunk];
-const appReducer = combineReducers({
-  rocketsReducer,
+// const initialState = {};
+/* const appReducer = combineReducers({
+  rocketsSlice,
   missionsReducer,
+}); */
+
+const store = configureStore({
+  reducer: {
+    rocketsSlice,
+    missionsReducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
-const missionsStore = configureStore({
-  reducer: appReducer,
-  initialState,
-  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), ...middleware],
-});
-
-export default missionsStore;
+export default store;

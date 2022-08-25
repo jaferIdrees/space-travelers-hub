@@ -1,13 +1,19 @@
-import React from 'react';
-import { useSelector/* , useDispatch */ } from 'react-redux';
+import React, { useEffect }/* , { useEffect } */ from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import ReserveButton from './ReserveButton';
+import { retrieveRockets } from '../redux/rockets/rockets';
 
 function Rockets() {
-  // const [disabled, setDisabled] = useState(false);
-  const rockets = useSelector((store) => store.rocketsReducer);
+  const rockets = useSelector((store) => store.rocketsSlice);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (rockets.length === 0) {
+      dispatch(retrieveRockets());
+    }
+  });
   return (
     <>
       {rockets.map((rocket) => (

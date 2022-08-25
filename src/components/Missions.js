@@ -1,10 +1,16 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { retrieveMissions, joinMission } from '../redux/missions/missions';
 
 function Missions() {
-  const state = useSelector((state) => state.missionsReducer);
+  const missions = useSelector((state) => state.missionsReducer);
+  const dispatch = useDispatch();
+  if (missions.length === 0) {
+    dispatch(retrieveMissions());
+  }
   return (
     <Table striped bordered hover>
       <thead>
@@ -16,11 +22,17 @@ function Missions() {
         </tr>
       </thead>
       <tbody>
-        {state.map((mission) => (
+        {missions.map((mission) => (
           <tr key={uuidv4()}>
             <td>{mission.mission_name}</td>
             <td>{mission.description}</td>
             <td>{mission.mission_name}</td>
+            <td>
+              <Button className={mission.joined ? 'activeButton' : 'notActiveButton'} type="button" onClick={() => dispatch(joinMission({ mission }))}>
+                {mission.joined ? 'Leave Mission' : 'Join Mission'}
+              </Button>
+
+            </td>
           </tr>
         ))}
       </tbody>
