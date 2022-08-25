@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 import ReserveButton from './ReserveButton';
 import { retrieveRockets } from '../redux/rockets/rockets';
 
@@ -23,11 +24,13 @@ function Rockets() {
             <Card style={{ width: '80rem' }}>
               <Card.Body>
                 <Card.Title>{ rocket.rocket_name }</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{rocket.reserved ? 'reserved' : 'not'}</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted" />
                 <Card.Text>
+                  {rocket.reserved && (<Badge bg="primary">Reserved</Badge>) }
+                  {' '}
                   { rocket.description }
                 </Card.Text>
-                <ReserveButton rocket={rocket} />
+                <ReserveButton rocket={rocket} variant={(!rocket.reserved ? 'primary' : 'outline-primary')} />
               </Card.Body>
             </Card>
           </ListGroup.Item>
