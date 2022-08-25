@@ -1,10 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector/* , useDispatch */ } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
-import { v4 as uuidv4 } from 'uuid';
+import ReserveButton from './ReserveButton';
 
 function Rockets() {
+  // const [disabled, setDisabled] = useState(false);
   const rockets = useSelector((store) => store.rocketsReducer);
   return (
     <>
@@ -15,11 +17,11 @@ function Rockets() {
             <Card style={{ width: '80rem' }}>
               <Card.Body>
                 <Card.Title>{ rocket.rocket_name }</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Reserved?</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">{rocket.reserved ? 'reserved' : 'not'}</Card.Subtitle>
                 <Card.Text>
                   { rocket.description }
                 </Card.Text>
-                <Card.Link href="#">Card Link</Card.Link>
+                <ReserveButton rocket={rocket} />
               </Card.Body>
             </Card>
           </ListGroup.Item>

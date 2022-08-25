@@ -2,6 +2,7 @@ import GetRockets from '../../API/rocketsService';
 
 // Actions
 const RETRIEVE_ROCKETS = 'RETRIEVE_ROCKETS';
+const RESERVE_ROCKETS = 'RESERVE_ROCKETS';
 const ERROR = 'ERROR';
 
 const initialState = [];
@@ -25,6 +26,15 @@ export default function reducer(state = initialState, action = {}) {
       });
       return newState;
     }
+    case RESERVE_ROCKETS:
+    {
+      const { id } = payload;
+      const newState = state.map((rocket) => {
+        if (rocket.id !== id) { return rocket; }
+        return { ...rocket, reserved: true };
+      });
+      return newState;
+    }
     default: return state;
   }
 }
@@ -42,4 +52,13 @@ export const retrieveRockets = () => async (dispatch) => {
       payload: { err },
     });
   }
+};
+
+export const reserveRocket = (rocket) => (dispatch) => {
+  dispatch({
+    type: RESERVE_ROCKETS,
+    payload: {
+      id: { ...rocket }.rocket.id,
+    },
+  });
 };
