@@ -37,8 +37,8 @@ function Missions() {
               <td>{mission.mission_name}</td>
               <td>{mission.description}</td>
               <td>
-                {mission.joined && (<Badge bg="primary">Active Member</Badge>)}
-                {!mission.joined && (<Badge bg="secondary">Not a Member</Badge>)}
+                {mission.joined && (<Badge bg="bg-primary" className="bg-primary">Active Member</Badge>)}
+                {!mission.joined && (<Badge bg="bg-secondary" className="bg-secondary">Not a Member</Badge>)}
               </td>
               <td>
                 <Button className={mission.joined ? 'activeButton' : 'notActiveButton'} type="button" onClick={() => dispatch(joinMission({ mission }))}>

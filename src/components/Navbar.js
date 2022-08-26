@@ -2,27 +2,8 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../assets/images/logo.png';
-// import { Link } from 'react-router-dom';
 
-/* const links = [
-  {
-    id: 1,
-    path: '/',
-    text: 'Rockets',
-  },
-  {
-    id: 2,
-    path: '/missions',
-    text: 'Missions',
-  },
-  {
-    id: 3,
-    path: '/my_profile',
-    text: 'My Profile',
-  },
-]; */
 function MainNavbar() {
   return (
     <>
@@ -53,6 +34,7 @@ function MainNavbar() {
                   <Link to="/missions" key="2">Missions</Link>
                 </Nav.Link>
               </Nav.Item>
+              <Nav.Item className="mt-auto mb-auto">|</Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="disabled">
                   <Link to="/my_profile" key="3">My Profile</Link>

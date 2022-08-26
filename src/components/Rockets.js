@@ -30,15 +30,14 @@ function Rockets() {
             <Card style={{ width: '80rem' }}>
               <Card.Body>
                 <Card.Title>{ rocket.rocket_name }</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
+                <Card.Subtitle className="mb-2 text-muted" />
+                <Card.Text>
                   {rocket.reserved && (
                   <>
-                    <Badge bg="primary" text="dark">Primary</Badge>
+                    <Badge bg="primary" text="dark" className="bg-primary">Reserved</Badge>
                     {' '}
                   </>
                   ) }
-                </Card.Subtitle>
-                <Card.Text>
                   {' '}
                   { rocket.description }
                 </Card.Text>
