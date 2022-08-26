@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
-// import { render, screen, fireEvent } from '@testing-library/react';
 import store from '../redux/configureStore';
 import Missions from '../components/Missions';
 import { retrieveMissions } from '../redux/missions/missions';
