@@ -15,34 +15,42 @@ function Missions() {
     }
   }, []);
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Mission</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th> </th>
-        </tr>
-      </thead>
-      <tbody>
-        {missions.map((mission) => (
-          <tr key={mission.mission_id}>
-            <td>{mission.mission_name}</td>
-            <td>{mission.description}</td>
-            <td>
-              {mission.joined && (<Badge bg="primary">Active Member</Badge>)}
-              {!mission.joined && (<Badge bg="secondary">Not a Member</Badge>)}
-            </td>
-            <td>
-              <Button className={mission.joined ? 'activeButton' : 'notActiveButton'} type="button" onClick={() => dispatch(joinMission({ mission }))}>
-                {mission.joined ? 'Leave Mission' : 'Join Mission'}
-              </Button>
-
-            </td>
+    <>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+        crossOrigin="anonymous"
+      />
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Mission</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th> </th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {missions.map((mission) => (
+            <tr key={mission.mission_id}>
+              <td>{mission.mission_name}</td>
+              <td>{mission.description}</td>
+              <td>
+                {mission.joined && (<Badge bg="primary">Active Member</Badge>)}
+                {!mission.joined && (<Badge bg="secondary">Not a Member</Badge>)}
+              </td>
+              <td>
+                <Button className={mission.joined ? 'activeButton' : 'notActiveButton'} type="button" onClick={() => dispatch(joinMission({ mission }))}>
+                  {mission.joined ? 'Leave Mission' : 'Join Mission'}
+                </Button>
+
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 }
 
