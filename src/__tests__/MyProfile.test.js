@@ -4,8 +4,8 @@ import renderer from 'react-test-renderer';
 import store from '../redux/configureStore';
 import MyProfile from '../components/MyProfile';
 
-describe('Rockets component testing using snapshots', () => {
-  it('Test Rockets component renders', () => {
+describe('MyProfile component testing using snapshots', () => {
+  it('Test MyProfile component renders', () => {
     const tree = renderer
       .create(
         <Provider store={store}>
