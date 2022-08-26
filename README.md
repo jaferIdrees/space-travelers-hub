@@ -15,6 +15,8 @@
 - linters
 - webpack
 - React
+- Bootstrap
+- React-Bootstrap
 - Redux
 - Jest
 
