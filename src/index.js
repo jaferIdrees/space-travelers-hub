@@ -12,9 +12,9 @@ root.render(
 
   <>
     <React.StrictMode>
-      <MainNavbar />
       <Provider store={store}>
         <BrowserRouter>
+          <MainNavbar />
           <div className="mainContainer">
             <App />
           </div>

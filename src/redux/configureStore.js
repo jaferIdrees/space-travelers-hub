@@ -12,8 +12,8 @@ import rocketsSlice from './rockets/rockets';
 
 const store = configureStore({
   reducer: {
-    rocketsSlice,
-    missionsReducer,
+    rockets: rocketsSlice,
+    missions: missionsReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action = {}) {
     {
       const newState = state.map((mission) => {
         if (mission.mission_id !== payload) { return mission; }
-        return { ...mission, joined: true };
+        return { ...mission, joined: !mission.joined };
       });
       return newState;
     }

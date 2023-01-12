@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Missions from './components/Missions';
-import Rockets from './components/Rockets';
+import Missions from './pages/Missions';
+import Rockets from './pages/Rockets';
+import MyProfile from './pages/MyProfile';
 
 function App() {
   // const rockets = useSelector((state) => state.rocketsReducer);
@@ -10,7 +11,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Rockets />} />
       <Route path="/missions" element={<Missions />} />
-      {/* <Route path="/categories" element={<Categories />} /> */}
+      <Route path="/my_profile" element={<MyProfile />} />
     </Routes>
   );
 }
